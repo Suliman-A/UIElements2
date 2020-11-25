@@ -8,71 +8,44 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
+import android.widget.*
+
+val albumSongs = ArrayList<String>()
+val albumURI = String
 
 class AlbumActivity : AppCompatActivity() {
-
-    private var arrayList = ArrayList<AlbumItem>()
-    var images = intArrayOf(
-        R.drawable.bob,
-        R.drawable.cent,
-        R.drawable.pac)
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album)
 
-        for(i in images.indices){
-            arrayList.add(AlbumItem(images[i]))
-        }
 
-        var albumAdapter = AlbumAdapter(arrayList, this)
+        val gridView = findViewById<GridView>(R.id.grid_view)
+        gridView.adapter = ImageAdapter(applicationContext)
 
-        var gridView = findViewById<GridView>(R.id.grid_view)
-        gridView.adapter = albumAdapter
-
-        gridView.setOnItemClickListener { parent, view, position, id ->
-            var intent = Intent(this,AlbumDetailsActivity::class.java)
-            intent.putExtra("data", arrayList[position])
+        gridView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this, AlbumDetailsActivity::class.java)
+            val uri: String
+            when (position) {
+                0 -> {
+                    uri = "@drawable/pac"
+                    albumSongs.clear()
+                    albumSongs.addAll(resources.getStringArray(R.array.pac))
+                }
+                1 -> {
+                    uri = "@drawable/bob"
+                    albumSongs.clear()
+                    albumSongs.addAll(resources.getStringArray(R.array.bob))
+                }
+                else -> {
+                    uri = "@drawable/cent"
+                    albumSongs.clear()
+                    albumSongs.addAll(resources.getStringArray(R.array.cent))
+                }
+            }
+            intent.putExtra("imageUri",  uri)
             startActivity(intent)
         }
-    }
 
-    class AlbumAdapter(
-        var albumItem: ArrayList<AlbumItem>,
-        var context: Context
-
-    ): BaseAdapter(){
-
-        var layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            var view = convertView
-            if(convertView == null){
-                view = layoutInflater.inflate(R.layout.grid_item_list, parent, false)
-            }
-
-            var imageView = view?.findViewById<ImageView>(R.id.icons)
-
-            imageView?.setImageResource(albumItem[position].icons!!)
-
-            return view!!
-        }
-
-        override fun getItem(position: Int): Any {
-            return albumItem[position]
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getCount(): Int {
-            return albumItem.size
-        }
 
     }
 

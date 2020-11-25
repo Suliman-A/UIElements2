@@ -7,7 +7,7 @@
     tools:context=".AlbumDetailsActivity">
 
     <ImageView
-        android:id="@+id/icon_details"
+        android:id="@+id/image_details"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:src="@drawable/pac"
@@ -19,14 +19,14 @@
         android:id="@+id/icon_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="House of Balloons"
+        android:text="Thoug Life"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/icon_details"
+        android:layout_below="@id/image_details"
         android:layout_marginTop="20dp">
     </TextView>
 
     <ListView
-        android:id="@+id/album_songs"
+        android:id="@+id/album_details_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/icon_name"

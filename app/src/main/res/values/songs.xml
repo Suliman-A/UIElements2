@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pac">
+        <item>2pac - Dream mama</item>
+        <item>2pac - only God Can judge me</item>
+        <item>2Pac - Thugs Get Lonely Too</item>
+        <item>2Pac - All eyes on me</item>
+        <item>2pac - Changes</item>
+
+    </string-array>
+    <string-array name="bob">
+        <item>Bob marley - a la la la la long</item>
+        <item>Bob Marley - Bend Down Low</item>
+        <item>Bob marley - a la la la la long</item>
+        <item>BOB marley - get up stand up</item>
+        <item>BOB marley - Africa Unite</item>
+
+    </string-array>
+    <string-array name="cent">
+        <item>50 Cent - So Serious</item>
+        <item>50 Cent - So Serious</item>
+        <item>50CENT - G Unit - Stunt 101</item>
+        <item>50CENT Candy shop</item>
+        <item>50CENT many men</item>
+
+    </string-array>
+</resources>
