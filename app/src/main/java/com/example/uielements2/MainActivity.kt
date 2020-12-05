@@ -9,20 +9,19 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.uielements2.model.Song
 import com.google.android.material.snackbar.Snackbar
 
 val queuedSongs = ArrayList<String>() //Array where all the songs queued will be stored and will be passed to the Queue activity
-val songsArray = arrayListOf<String>()
-
+//val songsArray = arrayListOf<String>()
+lateinit var songsArray: MutableList<Song>
+lateinit var songsAdapter: ArrayAdapter<Song>
 
 class MainActivity : AppCompatActivity() {
     lateinit var songsListView: ListView
     lateinit var songsTableHandler: SongsTableHandler
-    lateinit var songsArray: MutableList<Song>
-    lateinit var adapter: ArrayAdapter<Song>
-    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         //GET THE RECORD
         songsArray = songsTableHandler.read()
         //ATTACH IT TO THE ADAPTER
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, songsArray)
-        songsListView.adapter = adapter
+        songsAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, songsArray)
+        songsListView.adapter = songsAdapter
 
         registerForContextMenu(songsListView)
 
@@ -72,11 +71,23 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.editSong -> {
-                val intent = Intent (this, EditSongActivity::class.java)
                 val song_id = songsArray[menuInfo.position].id
+                val intent = Intent(this, EditSongActivity::class.java)
                 intent.putExtra("song_id", song_id)
                 startActivity(intent)
                 true
+            }
+            R.id.deleteSong -> {
+                val song = songsArray[menuInfo.position]
+                if(songsTableHandler.delete(song)){
+                    songsArray.removeAt(menuInfo.position)
+                    songsAdapter.notifyDataSetChanged()
+                    Toast.makeText(this, "Song was deleted.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show()
+                }
+                true
+
             }
             else -> {
                 return super.onContextItemSelected(item)

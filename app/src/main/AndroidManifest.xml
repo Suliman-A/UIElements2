@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UIElements2">
-        <activity android:name=".EditSongActivity"></activity>
+        <activity android:name=".AddAlbumAct"></activity>
+        <activity android:name=".AddSongToAlbumAct" />
+        <activity android:name=".NewAlbumDetailsActivity" />
+        <activity android:name=".EditAlbumActivity" />
+        <activity
+            android:name=".AddAlbumActivity"
+            android:label="@string/title_activity_add_album"
+            android:theme="@style/Theme.UIElements2.NoActionBar" />
+        <activity android:name=".EditSongActivity" />
         <activity android:name=".CreateSongActivity" />
         <activity android:name=".AlbumDetailsActivity" />
         <activity android:name=".AlbumActivity" />

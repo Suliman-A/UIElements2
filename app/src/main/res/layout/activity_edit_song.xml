@@ -47,7 +47,7 @@
         android:id="@+id/updateSongButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD SONG"
+        android:text="Update SONG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

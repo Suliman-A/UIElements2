@@ -16,12 +16,12 @@ import androidx.appcompat.app.AlertDialog
 
 class AlbumDetailsActivity : AppCompatActivity() {
 
-    lateinit var adapter : ArrayAdapter<String>
+   // lateinit var adapter : ArrayAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album_details)
-
+/*
         //Get the extra from the previous activity
         val uri = intent.getStringExtra("imageUri")
 
@@ -82,6 +82,8 @@ class AlbumDetailsActivity : AppCompatActivity() {
             }
 
         }
+
+ */
 
     }
 

@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".AlbumActivity">
 
-    <GridView
-        android:layout_width="match_parent"
+    <ListView
+        android:id="@+id/albumslistView"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:id="@+id/grid_view"
-        android:verticalSpacing="15dp"
-        android:horizontalSpacing="15dp"
-        android:columnWidth="150dp"
-        android:numColumns="auto_fit">
-    </GridView>
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:paddingTop="8dp"
+        android:stretchMode="columnWidth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </RelativeLayout>
